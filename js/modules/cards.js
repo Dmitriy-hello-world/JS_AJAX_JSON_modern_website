@@ -1,6 +1,6 @@
-function cards() {
+function cards(menuConteiner) {
     
-    const menu = document.querySelector(".menu .container");
+    const menu = document.querySelector(menuConteiner);
 
     class DayMenuCard {
         constructor(src,alt,title,text,price,parentSelector) {
@@ -57,4 +57,4 @@ function cards() {
     showCardsWithClass('http://localhost:3000/menu', '.menu .container');
 }
 
-module.exports = cards;
+export default cards;

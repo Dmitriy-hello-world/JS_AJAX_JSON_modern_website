@@ -1,8 +1,8 @@
-function tabs() {
+function tabs(allTabs,content,allParent) {
 
-    const tabs = document.querySelectorAll(".tabheader__item"),
-    tabsContent = document.querySelectorAll(".tabcontent"),
-    tabsParents = document.querySelector(".tabheader__items");
+    const tabs = document.querySelectorAll(allTabs),
+    tabsContent = document.querySelectorAll(content),
+    tabsParents = document.querySelector(allParent);
 
   function hide() {
       tabsContent.forEach( item => {
@@ -43,4 +43,4 @@ function tabs() {
 
 }
 
-module.exports = tabs;
+export default tabs;

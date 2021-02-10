@@ -1,17 +1,8 @@
-function sendMessage() {
-    const forms = document.querySelectorAll('form');
+import {modalWision, modalHide} from './modal';
+import {postData} from '../workfunc/data';
 
-    async function postData(url,body) {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: body
-        });
-
-        return response.json(); 
-    }
+function sendMessage(modalSelector,timerModalOpen, form) {
+    const forms = document.querySelectorAll(form);
 
     function sendMessage(form) {
         form.addEventListener('submit', event => {
@@ -60,13 +51,13 @@ function sendMessage() {
         </div>
         `;      
 
-        modalWision();
+        modalWision(modalSelector,timerModalOpen);
         modalDialog.classList.add('hide');
         
         document.querySelector('[data-modal]').append(thanksModalDiv);
 
         setTimeout( ()=> {
-            modalHide();
+            modalHide(modalSelector);
             modalDialog.classList.remove('hide');
             thanksModalDiv.remove();
         }, 4000 );
@@ -77,4 +68,4 @@ function sendMessage() {
     });
 }
 
-module.exports = sendMessage;
+export default sendMessage;

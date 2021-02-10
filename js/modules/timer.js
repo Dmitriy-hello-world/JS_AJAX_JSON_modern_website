@@ -1,5 +1,12 @@
-function timer() {
-    const deadlineTime = "2021-01-31";
+function getZero(num) {
+    if (num >= 0 && num < 10) {
+        return "0" + num;
+    } else {
+        return num;
+    }
+}
+
+function timer(classSelector,deadlineTime) {
     
     function getTime(deadlineTime) {
         const t = Date.parse(deadlineTime) - Date.parse(new Date()),
@@ -15,14 +22,6 @@ function timer() {
             minutes: minutes,
             seconds: seconds
         };
-    }
-
-    function getZero(num) {
-        if (num >= 0 && num < 10) {
-            return "0" + num;
-        } else {
-            return num;
-        }
     }
 
     function mainTimer(selector, deadlineTime) {
@@ -49,7 +48,8 @@ function timer() {
         }
     }
 
-    mainTimer(".timer", deadlineTime);
+    mainTimer(classSelector, deadlineTime);
 }
 
-module.exports = timer;
+export default timer;
+export {getZero};

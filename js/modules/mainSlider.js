@@ -1,20 +1,14 @@
-function mainSlider() {
-    const slides = document.querySelectorAll('.offer__slide'),
-    curent = document.querySelector('#current'),
-    total = document.querySelector('#total'),
-    slideLeft = document.querySelector('.offer__slider-prev'),
-    slideRight = document.querySelector('.offer__slider-next'),
-    sliderInner = document.querySelector('.offer__slider-inner'),
-    sliderWrapper = document.querySelector('.offer__slider-wrapper'),
-    width = window.getComputedStyle(sliderWrapper).width;
+import {getZero} from './timer';
 
-    function getZero(num) {
-        if (num >= 0 && num < 10) {
-            return "0" + num;
-        } else {
-            return num;
-        }
-    }
+function mainSlider({allSlides, number, fullNumber, arrowRight, arrowLeft, inner, wrapper, offerSlider}) {
+    const slides = document.querySelectorAll(allSlides),
+    curent = document.querySelector(number),
+    total = document.querySelector(fullNumber),
+    slideLeft = document.querySelector(arrowLeft),
+    slideRight = document.querySelector(arrowRight),
+    sliderInner = document.querySelector(inner),
+    sliderWrapper = document.querySelector(wrapper),
+    width = window.getComputedStyle(sliderWrapper).width;
 
     let i = 1;
     let offset = 0;
@@ -72,7 +66,7 @@ function mainSlider() {
 
     //  SLIDER-POINT HERE
 
-    const sliderArea = document.querySelector('.offer__slider');
+    const sliderArea = document.querySelector(offerSlider);
     const sliderPointDiv = document.createElement('div');
     const dots = [];
      
@@ -121,4 +115,4 @@ function mainSlider() {
     });
 }
 
-module.exports = mainSlider;
+export default mainSlider;
