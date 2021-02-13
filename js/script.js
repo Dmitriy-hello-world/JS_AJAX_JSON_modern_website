@@ -1,5 +1,8 @@
 'use strict';
 
+require('es6-promise').polyfill();
+import 'nodelist-foreach-polyfill';
+
 import calc from './modules/calc';
 import cards from './modules/cards';
 import mainSlider from './modules/mainSlider';
