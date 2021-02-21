@@ -30,6 +30,14 @@ window.addEventListener("DOMContentLoaded", () => {
     });
     modal("[data-modal]","[data-modalopen]",timerModalOpen);
     sendMessage("[data-modal]",timerModalOpen, 'form');
-    tabs(".tabheader__item",".tabcontent",".tabheader__items");
+    tabs({
+        allTabs: ".tabheader__item" ,
+        content: ".tabcontent",
+        allParent: ".tabheader__items",
+        activeClass: "tabheader__item_active",
+        hideClass: "hide",
+        wisionClass: "wision",
+        animateClass: "fade"
+    });
     timer(".timer", '2021-02-28');   
 });

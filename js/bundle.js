@@ -455,32 +455,40 @@ function sendMessage(modalSelector, timerModalOpen, form) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function tabs(allTabs, content, allParent) {
+function tabs({
+  allTabs,
+  content,
+  allParent,
+  activeClass,
+  hideClass,
+  wisionClass,
+  animateClass
+}) {
   const tabs = document.querySelectorAll(allTabs),
         tabsContent = document.querySelectorAll(content),
         tabsParents = document.querySelector(allParent);
 
   function hide() {
     tabsContent.forEach(item => {
-      item.classList.add("hide", "fade");
-      item.classList.remove("wision");
+      item.classList.add(hideClass, animateClass);
+      item.classList.remove(wisionClass);
     });
     tabs.forEach(item => {
-      item.classList.remove("tabheader__item_active");
+      item.classList.remove(activeClass);
     });
   }
 
   function wision(i = 0) {
-    tabsContent[i].classList.add("wision");
-    tabsContent[i].classList.remove("hide");
-    tabs[i].classList.add("tabheader__item_active");
+    tabsContent[i].classList.add(wisionClass);
+    tabsContent[i].classList.remove(hideClass);
+    tabs[i].classList.add(activeClass);
   }
 
   function mainTabs() {
     tabsParents.addEventListener("click", event => {
       const target = event.target;
 
-      if (target && target.classList.contains("tabheader__item")) {
+      if (target && target.classList.contains(allTabs.slice(1))) {
         tabs.forEach((item, i) => {
           if (item == target) {
             hide();
@@ -611,7 +619,15 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   (0,_modules_modal__WEBPACK_IMPORTED_MODULE_4__.default)("[data-modal]", "[data-modalopen]", timerModalOpen);
   (0,_modules_sendMessage__WEBPACK_IMPORTED_MODULE_5__.default)("[data-modal]", timerModalOpen, 'form');
-  (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_6__.default)(".tabheader__item", ".tabcontent", ".tabheader__items");
+  (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_6__.default)({
+    allTabs: ".tabheader__item",
+    content: ".tabcontent",
+    allParent: ".tabheader__items",
+    activeClass: "tabheader__item_active",
+    hideClass: "hide",
+    wisionClass: "wision",
+    animateClass: "fade"
+  });
   (0,_modules_timer__WEBPACK_IMPORTED_MODULE_7__.default)(".timer", '2021-02-28');
 });
 
